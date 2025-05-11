@@ -1,8 +1,12 @@
 import React from 'react'
-
-function ArtistCard() {
+import { useNavigate } from 'react-router-dom'
+function ArtistCard({track, i}) {
+  const navigate = useNavigate();
   return (
-    <div>ArtistCard</div>
+    <div onClick={() => navigate(`/artists/${track?.artists[0]?.adamid}`)}>
+      <img alt='Artist' src={track?.images?.coverart}/>
+      <p>{track?.subtitle}</p>
+    </div>
   )
 }
 
