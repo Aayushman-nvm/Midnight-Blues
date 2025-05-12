@@ -5,6 +5,7 @@ import { playPause, setActiveSong } from '../Redux/playerSlice'
 
 function SongCard({ song, i, isPlaying, activeSong, data }) {
 
+  const artistData = song?.relationships?.artists?.data;
   const dispatch = useDispatch()
 
   function handlePlayClick() {
@@ -21,18 +22,23 @@ function SongCard({ song, i, isPlaying, activeSong, data }) {
         <div>
           <PlayPause song={song} handlePause={handlePauseClick} handlePlay={handlePlayClick} isPlaying={isPlaying} activeSong={activeSong} />
         </div>
-        <img alt="song_image" src={song.attributes?.artwork?.url} />
+        <img alt="song_image" src={song?.attributes?.artwork?.url} />
       </div>
       <div>
         <p>
-          <Link to={`/song/${song?.key}`}>
-            {song.name}
+          <Link to={`/song/${song?.id}`}>
+            {song?.attributes?.name}
+            {song?.attributes?.albumName}
           </Link>
         </p>
         <p>
-          <Link to={song.artists ? `/artist/${song?.artists[0]?.adamid}` : '/top-artists'}>
-            {song.attributes.albumName}
-          </Link>
+          {artistData?.map((artist) => {
+            return (
+              <Link key={artist.id} to={`/artist/${artist.id}` || '/top-artists'}>
+                {artist.attributes.artistName}
+              </Link>
+            )
+          })}
         </p>
       </div>
     </div>
