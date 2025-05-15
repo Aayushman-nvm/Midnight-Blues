@@ -16,12 +16,12 @@ function App() {
   const { activeSong } = useSelector((state) => state.player);
 
   return (
-    <div className="relative flex">
+    <div className="relative flex bg-[#0f0f1b] text-white min-h-screen">
       <SideBar />
-      <div className="flex-1 flex flex-col bg-slate-300">
+      <div className="flex-1 flex flex-col bg-[#0d0d1a]">
         <SearchBar />
 
-        <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
+        <div className="px-4 sm:px-6 md:px-8 h-[calc(100vh-72px)] overflow-y-auto hide-scrollbar flex xl:flex-row flex-col-reverse">
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />
@@ -40,7 +40,7 @@ function App() {
       </div>
 
       {activeSong?.title && (
-        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#17172f] backdrop-blur-lg rounded-t-3xl z-10">
+        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/5 to-[#17172f] backdrop-blur-md rounded-t-3xl z-10 border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.4)]">
           <MusicPlayer />
         </div>
       )}
