@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
 import ArtistDetails from './pages/ArtistDetails.jsx';
 import AlbumDetails from './pages/AlbumDetails.jsx';
+import AboutDev from './pages/AboutDev.jsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/search/:searchParam" element={<Search />} />
           <Route path="/artist/:artistId" element={<ArtistDetails />} />
           <Route path="/album/:albumId" element={<AlbumDetails />} />
+          <Route path="/about" element={<AboutDev />} />
         </Routes>
       </main>
 
