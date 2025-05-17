@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
-import Loader from "../assets/loader.json";
+import Loader from "../assets/Loader.json";
 
 function AboutDev() {
+
     const [loading, setLoading] = useState(false);
     const [gitData, setGitData] = useState(null);
 
@@ -51,11 +52,9 @@ function AboutDev() {
         <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex items-center justify-center px-4 py-12">
             <div className="max-w-3xl w-full bg-gray-800 rounded-2xl shadow-lg p-8 flex flex-col items-center space-y-6">
 
-                {/* Animated banner */}
                 <div className="relative w-full flex justify-center">
                     <div className="w-full h-36 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 animate-pulse" />
 
-                    {/* Profile image overlapping banner */}
                     <img
                         src={gitData.avatar_url}
                         alt={`${gitData.name}'s profile`}
@@ -63,7 +62,6 @@ function AboutDev() {
                     />
                 </div>
 
-                {/* Info section */}
                 <div className="pt-8 text-center space-y-2">
                     <h1 className="text-3xl font-bold">{gitData.name}</h1>
                     <p className="text-gray-400">@{gitData.login}</p>
@@ -78,7 +76,6 @@ function AboutDev() {
                     <p className="text-sm text-gray-300 mt-2">{gitData.bio}</p>
                 </div>
 
-                {/* About description */}
                 <div className="bg-gray-700 rounded-lg p-4 w-full text-sm text-gray-200 leading-relaxed">
                     <p>
                         Hey there! Aayushman here, a passionate developer with a knack for

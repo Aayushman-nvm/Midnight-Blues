@@ -1,5 +1,7 @@
 function ArtistCard({ data }) {
+
   return (
+
     <div className="max-w-3xl mx-auto bg-gray-800 text-white rounded-lg shadow-lg p-6 mt-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
       <div className="flex flex-col md:flex-row items-center gap-6">
         <img
@@ -23,6 +25,7 @@ function ArtistCard({ data }) {
         </div>
       </div>
     </div>
+    
   );
 }
 

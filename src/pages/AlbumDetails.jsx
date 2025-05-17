@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import { useGetAlbumDetailsQuery } from "../Redux/services/deezerApi";
 import AlbumCard from "../components/albumCard.jsx";
 import Lottie from "lottie-react";
-import Loader from "../assets/loader.json";
+import Loader from "../assets/Loader.json";
 
 function AlbumDetails() {
+  
   const { albumId } = useParams();
   const { data, error, isLoading } = useGetAlbumDetailsQuery(albumId);
 

@@ -1,20 +1,26 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function SearchBar() {
-    const [searchParam, setSearchParam] = useState('')
+
+    const [searchParam, setSearchParam] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     const navigate = useNavigate();
+
     function handleRedirect() {
         navigate(`/search/${searchParam}`)
     }
+
     function handleKeyPress(e) {
         if (e.key === 'Enter') {
             handleRedirect();
         }
     }
+
     return (
+        
         <div className="relative w-full">
-            {/* Input + Button Wrapper */}
+
             <div className={`relative z-10 flex items-center bg-gray-800 rounded-full transition-all duration-300 ${isFocused ? 'ring-2 ring-purple-500' : ''}`}>
                 <input
                     type="text"
@@ -37,7 +43,6 @@ function SearchBar() {
                 </button>
             </div>
 
-            {/* Glow effect background */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full blur opacity-30 animate-pulse z-0"></div>
         </div>
 

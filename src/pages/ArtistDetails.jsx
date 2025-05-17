@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import { useGetArtistDetailsQuery } from "../Redux/services/deezerApi";
 import ArtistCard from "../components/artistCard.jsx";
 import Lottie from "lottie-react";
-import Loader from "../assets/loader.json";
+import Loader from "../assets/Loader.json";
 
 function ArtistDetails() {
+  
   const { artistId } = useParams();
   const { data, error, isLoading } = useGetArtistDetailsQuery(artistId);
 

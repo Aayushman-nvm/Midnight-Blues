@@ -1,16 +1,20 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
+
   const { currentTrack } = useSelector((state) => state.player);
   const isSongPlaying = currentTrack?.id === item.id && isPlaying;
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+
   function handleRedirect(type) {
     type === "artist" ? navigate(`/artist/${item.artist.id}`) : navigate(`/album/${item.album.id}`)
   }
+
   return (
+
     <div
       className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105 hover:bg-gray-700 mb-6"
       onMouseEnter={() => setIsHovered(true)}
@@ -121,6 +125,7 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
         </div>
       )}
     </div>
+    
   )
 }
 

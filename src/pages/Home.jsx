@@ -2,7 +2,7 @@ import SearchBar from "../components/searchBar";
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import Loader from "../assets/loader.json";
+import Loader from "../assets/Loader.json";
 
 function Home() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -65,7 +65,7 @@ function Home() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
-            {/* Hero Section */}
+
             <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className={`transition-all duration-1000 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -75,12 +75,10 @@ function Home() {
                         Discover your next favorite track with 30-second music snippets
                     </p>
 
-                    {/* Search Bar */}
                     <div className="max-w-lg mb-12">
                         <SearchBar />
                     </div>
 
-                    {/* Stats */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8">
                         <div className={`text-center p-4 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg backdrop-blur-sm transition-all duration-1000 delay-100 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                             <span className="block text-3xl font-bold text-purple-400 mb-1">10M+</span>
@@ -102,7 +100,6 @@ function Home() {
                 </div>
             </section>
 
-            {/* Featured Section with animation */}
             <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className={`mb-12 transition-all duration-1000 delay-500 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <h2 className="text-3xl font-bold mb-8 flex items-center">
@@ -112,7 +109,6 @@ function Home() {
                         Featured Artists
                     </h2>
 
-                    {/* Featured Artists Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {featured.map((item, index) => (
                             <div
@@ -129,7 +125,6 @@ function Home() {
                                     <p className="text-sm text-gray-400">{item.genre}</p>
                                 </div>
 
-                                {/* Hover Effect */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
                                     <button onClick={() => handleRedirect(item.link)} className="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transform scale-0 group-hover:scale-100 transition-transform duration-500">
                                         View Artist
@@ -140,7 +135,6 @@ function Home() {
                     </div>
                 </div>
 
-                {/* How It Works */}
                 <div className={`transition-all duration-1000 delay-900 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <h2 className="text-3xl font-bold mb-8 flex items-center">
                         <svg className="w-8 h-8 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -184,14 +178,12 @@ function Home() {
                 </div>
             </section>
 
-            {/* Animated background circles */}
             <div className="fixed inset-0 -z-10 overflow-hidden">
                 <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
                 <div className="absolute top-40 -right-40 w-80 h-80 bg-blue-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
                 <div className="absolute bottom-40 left-20 w-80 h-80 bg-indigo-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
             </div>
 
-            {/* Custom animation keyframes would be defined in your CSS */}
         </div>
     )
 }

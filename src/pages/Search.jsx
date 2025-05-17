@@ -1,14 +1,15 @@
-import { useState, useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
-import { useGetSearchQuery } from '../Redux/services/deezerApi'
-import Card from '../components/card.jsx'
-import SearchBar from '../components/searchBar'
-import { playSong, stopSong } from '../Redux/features/playerSlice.js'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { useGetSearchQuery } from '../Redux/services/deezerApi';
+import Card from '../components/card.jsx';
+import SearchBar from '../components/searchBar';
+import { playSong, stopSong } from '../Redux/features/playerSlice.js';
+import { useDispatch, useSelector } from 'react-redux';
 import Lottie from "lottie-react";
-import Loader from "../assets/loader.json";
+import Loader from "../assets/Loader.json";
 
 function Search() {
+
     const { searchParam } = useParams()
     const { data, error, isLoading } = useGetSearchQuery(searchParam)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -65,12 +66,10 @@ function Search() {
                         Explore music results based on your search
                     </p>
 
-                    {/* Search Bar Again (Optional) */}
                     <div className="max-w-lg mb-10">
                         <SearchBar />
                     </div>
 
-                    {/* Results Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {isLoading && (
                             <p className="col-span-full text-center text-gray-400 animate-pulse">
