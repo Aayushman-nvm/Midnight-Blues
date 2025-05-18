@@ -65,8 +65,8 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
             </div>
 
             {!isSongPlaying && <button
-              onClick={() => { handlePlaySong(item), setPlaying(true) }}
-              className="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
+              onClick={() => { handlePlaySong(item) }}
+              className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
             >
               <span className="z-10 flex items-center">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -75,11 +75,11 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
                 </svg>
                 Play Preview
               </span>
-              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-purple-500 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </button>}
             {isSongPlaying && <button
-              onClick={() => { handleStopSong(item), setPlaying(false) }}
-              className="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
+              onClick={() => { handleStopSong(item) }}
+              className="mt-6 w-full bg-red-500 hover:bg-red-600 text-white py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
             >
               <span className="z-10 flex items-center">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
                 </svg>
                 Stop Preview
               </span>
-              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-purple-500 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </button>}
           </div>
         </div>
@@ -125,7 +125,7 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
         </div>
       )}
     </div>
-    
+
   )
 }
 

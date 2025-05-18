@@ -4,7 +4,7 @@ function AlbumCard({ data }) {
 
   return (
 
-    <div className="max-w-4xl mx-auto bg-gray-800 text-white rounded-lg shadow-lg p-6 mt-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+    <div className="max-w-4xl mx-auto bg-gray-800 text-white rounded-lg shadow-lg p-6 mt-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] m-4">
       <div className="flex flex-col md:flex-row items-start gap-6">
         <img
           src={data.cover_xl}
