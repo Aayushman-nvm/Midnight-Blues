@@ -41,7 +41,7 @@ function AlbumDetails() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black text-white">
+      <div className="min-h-screen flex items-center justify-center text-white">
         <div className="flex flex-col items-center justify-center space-y-4">
           <h1 className="text-3xl font-bold animate-pulse">Loading...</h1>
           <p className="text-lg text-gray-400 animate-pulse">Please wait while we load your experience</p>
@@ -60,9 +60,9 @@ function AlbumDetails() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-10 px-4">
+    <div className="min-h-screen py-10 px-4">
       <div className="max-w-screen-lg mx-auto">
-        <h1 className="text-4xl text-white font-bold mb-8 text-center">Album Details</h1>
+        <h1 className="mt-7 text-4xl text-white/80 font-bold mb-8 text-center font-inter">Album Details</h1>
         {data && <AlbumCard key={data.id} data={data} />}
         {data && data.tracks && data.tracks.data && data.tracks.data.length > 0 ? (
           <div className="space-y-4">

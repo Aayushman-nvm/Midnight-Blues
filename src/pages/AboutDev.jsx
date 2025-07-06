@@ -49,40 +49,49 @@ function AboutDev() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex items-center justify-center px-4 py-12">
-            <div className="max-w-3xl w-full bg-gray-800 rounded-2xl shadow-lg p-8 flex flex-col items-center space-y-6">
+        <div className="min-h-screen text-white flex items-center justify-center px-4 py-12">
+            <div className="relative group max-w-3xl w-full rounded-2xl shadow-lg p-8 text-center overflow-hidden bg-white/5 bg-opacity-50 backdrop-blur-sm">
 
-                <div className="relative w-full flex justify-center">
-                    <div className="w-full h-36 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 animate-pulse" />
+                {/* Hover effect overlay for catching attention... */}
+                <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl z-0" />
 
-                    <img
-                        src={gitData.avatar_url}
-                        alt={`${gitData.name}'s profile`}
-                        className="w-24 sm:w-28 md:w-32 h-auto rounded-full border-4 border-white shadow-xl absolute top-1/2 transform -translate-y-1/2"
-                    />
-                </div>
+                <div className="relative z-10 flex flex-col items-center space-y-6">
 
-                <div className="pt-8 text-center space-y-2">
-                    <h1 className="text-3xl font-bold">{gitData.name}</h1>
-                    <p className="text-gray-400">@{gitData.login}</p>
-                    <a
-                        href={gitData.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:underline hover:text-blue-300 transition border-2 border-blue-400 rounded-lg px-4 py-2 mt-2 inline-block"
-                    >
-                        View GitHub Profile
-                    </a>
-                    <p className="text-sm text-gray-300 mt-2">{gitData.bio}</p>
-                </div>
+                    {/* Header Banner + Avatar */}
+                    <div className="relative w-full flex justify-center">
+                        <div className="w-full h-36 rounded-xl bg-gradient-to-r from-[#071334] via-[#05070c] to-[#071334] animate-pulse" />
 
-                <div className="bg-gray-700 rounded-lg p-4 w-full text-sm text-gray-200 leading-relaxed">
-                    <p>
-                        Hey there! Aayushman here, a passionate developer with a knack for
-                        creating engaging web applications. This project is a testament to
-                        my love for music and coding. I hope you find it as enjoyable to use
-                        as I did to build it!
-                    </p>
+                        <img
+                            src={gitData.avatar_url}
+                            alt={`${gitData.name}'s profile`}
+                            className="w-24 sm:w-28 md:w-32 h-auto rounded-full border-4 border-white shadow-xl absolute top-1/2 transform -translate-y-1/2"
+                        />
+                    </div>
+
+                    {/* Profile Info */}
+                    <div className="pt-8 space-y-2">
+                        <h1 className="font-inter text-3xl font-bold">{gitData.name}</h1>
+                        <p className="font-inter text-gray-400">@{gitData.login}</p>
+                        <a
+                            href={gitData.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-inter text-blue-400 hover:underline hover:text-blue-300 transition border-2 border-blue-400 rounded-lg px-4 py-2 mt-2 inline-block"
+                        >
+                            View GitHub Profile
+                        </a>
+                        <p className="font-inter text-sm text-gray-300 mt-2">{gitData.bio}</p>
+                    </div>
+
+                    {/* Custom Bio */}
+                    <div className="font-inter bg-white/5 hover:bg-black/70 transition-all duration-1000 bg-opacity-10 rounded-lg p-4 w-full text-sm text-gray-200 leading-relaxed">
+                        <p>
+                            Hey there! Aayushman here, a passionate developer with a knack for
+                            creating engaging web applications. This project is a testament to
+                            my love for music and coding. I hope you find it as enjoyable to use
+                            as I did to build it!
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

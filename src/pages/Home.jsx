@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import Loader from "../assets/Loader.json";
+import { IoSearch } from "react-icons/io5";
+import { FaRegCirclePlay } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa";
 
 function Home() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -43,6 +46,41 @@ function Home() {
         },
     ]
 
+    const analytics = [
+        {
+            title: "Tracks",
+            value: "10M+"
+        },
+        {
+            title: "Artists",
+            value: "1M+"
+        }, {
+            title: "Albums",
+            value: "10M+"
+        }, {
+            title: "Genres",
+            value: "100+"
+        },
+    ]
+
+    const guides = [
+        {
+            title: "Search",
+            icon: <IoSearch className="w-8 h-8" />,
+            description: "Find your favorite artists, albums, or discover new music."
+        },
+        {
+            title: "Listen",
+            icon: <FaRegCirclePlay className="w-8 h-8" />,
+            description: "Preview 30-second snippets of any track."
+        },
+        {
+            title: "Enjoy",
+            icon: <FaRegHeart className="w-8 h-8" />,
+            description: "Discover new music you'll love with full track info."
+        },
+    ]
+
     function handleRedirect(link) {
         navigate(link);
     }
@@ -64,14 +102,17 @@ function Home() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+        <div className="min-h-screen text-white">
 
             <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className={`transition-all duration-1000 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                        Midnight Blues
+                    <h1 className="font-playfair text-7xl md:text-9xl font-bold mb-4 bg-gradient-to-t from-white/10 via-white/70 to-white bg-clip-text text-transparent">
+                        Midnight
                     </h1>
-                    <p className="text-xl md:text-2xl text-gray-300 mb-8">
+                    <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-t from-white/10 via-white/70 to-white bg-clip-text text-transparent">
+                        Blues
+                    </h2>
+                    <p className="font-inter text-xl md:text-2xl text-gray-500 mb-8">
                         Discover your next favorite track with 30-second music snippets
                     </p>
 
@@ -80,30 +121,25 @@ function Home() {
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8">
-                        <div className={`text-center p-4 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg backdrop-blur-sm transition-all duration-1000 delay-100 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                            <span className="block text-3xl font-bold text-purple-400 mb-1">10M+</span>
-                            <span className="text-gray-400">Tracks</span>
-                        </div>
-                        <div className={`text-center p-4 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg backdrop-blur-sm transition-all duration-1000 delay-200 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                            <span className="block text-3xl font-bold text-blue-400 mb-1">1M+</span>
-                            <span className="text-gray-400">Artists</span>
-                        </div>
-                        <div className={`text-center p-4 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg backdrop-blur-sm transition-all duration-1000 delay-300 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                            <span className="block text-3xl font-bold text-indigo-400 mb-1">5M+</span>
-                            <span className="text-gray-400">Albums</span>
-                        </div>
-                        <div className={`text-center p-4 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg backdrop-blur-sm transition-all duration-1000 delay-400 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                            <span className="block text-3xl font-bold text-pink-400 mb-1">100+</span>
-                            <span className="text-gray-400">Genres</span>
-                        </div>
+                        {analytics.map((item, index) => {
+                            return (
+                                <div key={index} className="relative group text-center p-4 bg-transparent border border-white/20 rounded-lg shadow-lg backdrop-blur-md transition-all duration-1000 delay-100 transform overflow-hidden text-white/50 hover:text-white/80">
+
+                                    <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-white/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg" />
+
+                                    <span className="block text-3xl font-bold mb-1 font-inter">{item.value}</span>
+                                    <span className="font-inter">{item.title}</span>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
             <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className={`mb-12 transition-all duration-1000 delay-500 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <h2 className="text-3xl font-bold mb-8 flex items-center">
-                        <svg className="w-8 h-8 mr-2 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <h2 className="text-3xl font-bold mb-8 flex items-center text-white/70 font-inter">
+                        <svg className="w-8 h-8 mr-2 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3l14 9-14 9V3z"></path>
                         </svg>
                         Featured Artists
@@ -121,12 +157,12 @@ function Home() {
                                     </div>
                                 </div>
                                 <div className="mt-2">
-                                    <h3 className="text-lg font-medium">{item.name}</h3>
-                                    <p className="text-sm text-gray-400">{item.genre}</p>
+                                    <h3 className="text-lg font-medium text-white/80 font-inter">{item.name}</h3>
+                                    <p className="text-sm text-gray-400 font-inter">{item.genre}</p>
                                 </div>
 
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                                    <button onClick={() => handleRedirect(item.link)} className="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transform scale-0 group-hover:scale-100 transition-transform duration-500">
+                                    <button onClick={() => handleRedirect(item.link)} className="px-4 py-2 bg-gray-900 text-white/60 rounded-full hover:bg-gray-800 border border-gray-700 font-inter transform scale-0 group-hover:scale-100 transition-transform duration-500 flex items-center justify-center gap-2">
                                         View Artist
                                     </button>
                                 </div>
@@ -136,54 +172,31 @@ function Home() {
                 </div>
 
                 <div className={`transition-all duration-1000 delay-900 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <h2 className="text-3xl font-bold mb-8 flex items-center">
-                        <svg className="w-8 h-8 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <h2 className="text-3xl font-bold mb-8 flex items-center text-white/70 font-inter">
+                        <svg className="w-8 h-8 mr-2 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                         How It Works
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="bg-gray-800 bg-opacity-50 p-6 rounded-lg text-center">
-                            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-600 flex items-center justify-center">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2">Search</h3>
-                            <p className="text-gray-400">Find your favorite artists, albums, or discover new music.</p>
-                        </div>
+                        {guides.map((guide, index) => {
+                            return (
+                                <div key={index} className="relative group bg-white/5 bg-opacity-50 p-6 rounded-lg text-center">
 
-                        <div className="bg-gray-800 bg-opacity-50 p-6 rounded-lg text-center">
-                            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-600 flex items-center justify-center">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2">Listen</h3>
-                            <p className="text-gray-400">Preview 30-second snippets of any track.</p>
-                        </div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-white/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg" />
 
-                        <div className="bg-gray-800 bg-opacity-50 p-6 rounded-lg text-center">
-                            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-indigo-600 flex items-center justify-center">
-                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2">Enjoy</h3>
-                            <p className="text-gray-400">Discover new music you'll love with full track info.</p>
-                        </div>
+                                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-black flex items-center justify-center">
+                                        {guide.icon}
+                                    </div>
+                                    <h3 className="text-xl font-semibold mb-2 font-inter">{guide.title}</h3>
+                                    <p className="text-gray-400 font-inter">{guide.description}</p>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </section>
-
-            <div className="fixed inset-0 -z-10 overflow-hidden">
-                <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-                <div className="absolute top-40 -right-40 w-80 h-80 bg-blue-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-                <div className="absolute bottom-40 left-20 w-80 h-80 bg-indigo-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-            </div>
-
         </div>
     )
 }

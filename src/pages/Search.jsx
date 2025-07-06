@@ -41,7 +41,7 @@ function Search() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black text-white">
+            <div className="min-h-screen flex items-center justify-center text-white">
                 <div className="flex flex-col items-center justify-center space-y-4">
                     <h1 className="text-3xl font-bold animate-pulse">Loading...</h1>
                     <p className="text-lg text-gray-400 animate-pulse">Please wait while we load your experience</p>
@@ -56,13 +56,13 @@ function Search() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+        <div className="min-h-screen text-white">
             <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className={`transition-all duration-1000 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    <h1 className="font-inter text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-t from-white/10 via-white/70 to-white bg-clip-text text-transparent">
                         Search Results for: {searchParam}
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-300 mb-6">
+                    <p className="font-inter text-lg md:text-xl text-gray-300 mb-6">
                         Explore music results based on your search
                     </p>
 
@@ -82,7 +82,7 @@ function Search() {
                             </p>
                         )}
                         {data && data.data.length === 0 && (
-                            <p className="col-span-full text-center text-gray-400">
+                            <p className="font-inter col-span-full text-center text-gray-400">
                                 No results found for "{searchParam}".
                             </p>
                         )}
