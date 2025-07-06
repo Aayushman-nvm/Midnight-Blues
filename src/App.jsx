@@ -9,13 +9,12 @@ import AboutDev from './pages/AboutDev.jsx';
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
-      {/* Fixed height nav, use sticky or fixed if needed */}
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#071334] via-[#05070c] to-black text-white">
+
       <header className="z-50">
         <NavBar />
       </header>
 
-      {/* Main content with flexible height */}
       <main className="flex-grow px-4 py-6">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,7 +25,6 @@ function App() {
         </Routes>
       </main>
 
-      {/* Footer stays at bottom */}
       <footer className="z-50">
         <FooterBar />
       </footer>
