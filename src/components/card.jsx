@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { LuCirclePlay } from "react-icons/lu";
+import { FaChevronRight } from "react-icons/fa";
+import { FaRegMap } from "react-icons/fa";
 
 function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
 
@@ -16,7 +19,7 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
   return (
 
     <div
-      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105 hover:bg-gray-700 mb-6"
+      className="bg-black/40 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105 hover:bg-gradient-to-b from-[#021241] via-[#05070c] to-black/80 mb-6 p-2 border border-white/10"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -26,7 +29,7 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
             <img
               src={item?.artist?.picture_xl}
               alt={`${item.artist.name}'s image`}
-              className="w-full h-full object-cover transition-transform duration-700 ease-in-out transform"
+              className="w-full h-full object-cover transition-transform duration-700 ease-in-out transform rounded"
               style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}
             />
             <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-80' : 'opacity-70'}`}></div>
@@ -35,12 +38,12 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
           <div className="p-6 relative z-10 -mt-16">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2 line-clamp-2">{item?.title || 'Untitled'}</h3>
-                <p className="text-gray-300 mb-1">{item?.title_short}</p>
-                {item?.title_version && <p className="text-gray-400 text-sm mb-3">{item?.title_version}</p>}
+                <h3 className="text-2xl font-bold text-white mb-2 line-clamp-2 font-inter">{item?.title || 'Untitled'}</h3>
+                <p className="text-gray-300 mb-1 font-inter">{item?.title_short}</p>
+                {item?.title_version && <p className="text-gray-400 text-sm mb-3 font-inter">{item?.title_version}</p>}
               </div>
 
-              <div className="bg-purple-600 text-white text-sm px-3 py-1 rounded-full">
+              <div className="bg-[#071334]/20 border border-white/30 text-white text-sm px-3 py-1 rounded-full font-inter">
                 {Math.floor(item?.duration / 60)}:{(item?.duration % 60).toString().padStart(2, '0')}
               </div>
             </div>
@@ -54,41 +57,33 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
                 <p className="text-white font-medium">{item?.artist?.name}</p>
                 <button
                   onClick={() => handleRedirect("artist")}
-                  className="text-purple-400 hover:text-purple-300 text-sm transition-colors duration-200 flex items-center mt-1"
+                  className="font-inter text-white/50 hover:text-white/80 text-sm transition-colors duration-200 flex items-center mt-1"
                 >
                   View Artist
-                  <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
+                  <FaChevronRight className="w-3 h-3 ml-1 mt-1" />
                 </button>
               </div>
             </div>
 
             {!isSongPlaying && <button
               onClick={() => { handlePlaySong(item) }}
-              className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
+              className="font-inter mt-6 w-full bg-white/20 text-white/80 py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
             >
               <span className="z-10 flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+                <LuCirclePlay className="w-5 h-5 mr-2" />
                 Play Preview
               </span>
-              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+              <span className="absolute inset-0 h-full w-full bg-gradient-to-l from-[#071334] to-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </button>}
             {isSongPlaying && <button
               onClick={() => { handleStopSong(item) }}
-              className="mt-6 w-full bg-red-500 hover:bg-red-600 text-white py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
+              className="font-inter mt-6 w-full bg-red-500/80 text-white/80 py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 relative group overflow-hidden"
             >
               <span className="z-10 flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+                <LuCirclePlay className="w-5 h-5 mr-2" />
                 Stop Preview
               </span>
-              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-black/80 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </button>}
           </div>
         </div>
@@ -107,19 +102,17 @@ function Card({ item, handlePlaySong, handleStopSong, isPlaying }) {
           </div>
 
           <div className="p-6 relative z-10 -mt-16">
-            <h3 className="text-2xl font-bold text-white mb-4 line-clamp-2">{item?.album?.title || 'Untitled Album'}</h3>
+            <h3 className="font-inter text-2xl font-bold text-white mb-4 line-clamp-2">{item?.album?.title || 'Untitled Album'}</h3>
 
             <button
               onClick={() => handleRedirect("album")}
-              className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 w-full group relative overflow-hidden"
+              className="font-inter bg-white/10 text-white/80 py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 w-full group relative overflow-hidden"
             >
               <span className="z-10 flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
-                </svg>
+                <FaRegMap className="w-5 h-5 mr-2" />
                 View Album Details
               </span>
-              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+              <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-white/5 to-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </button>
           </div>
         </div>
